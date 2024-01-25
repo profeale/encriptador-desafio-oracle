@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador / Desencriptador</title>
+    <style>
+        /* Estilos generales */
+        body {
+            position: relative;
+            width: 1440px;
+            height: 1024px;
+            background: #F3F5FC;
+        }
+
+        /* Contenedor principal */
+        #container {
+            position: absolute;
+            width: 400px;
+            height: 944px;
+            left: 1000px;
+            top: 40px;
+            background: #FFFFFF;
+            box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+            border-radius: 32px;
+        }
+
+        /* Texto de ejemplo */
+        #sampleText {
+            position: absolute;
+            width: 336px;
+            height: 781px;
+            left: 1032px;
+            top: 72px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 150%;
+            color: #495057;
+        }
+
+        /* Otros estilos, botones, etc. */
+#container button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#container button:hover {
+    background-color: #45a049;
+}
+
+#output {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <label for="inputText">Texto:</label>
+        <input type="text" id="inputText">
+
+        <label for="option">Opción:</label>
+        <select id="option">
+            <option value="encrypt">Encriptar</option>
+            <option value="decrypt">Desencriptar</option>
+        </select>
+
+        <button onclick="processText()">Procesar</button>
+        <button onclick="copiarTexto()">Copiar Resultado</button>
+        
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function processText() {
+            var inputText = document.getElementById('inputText').value.toLowerCase();
+            var option = document.getElementById('option').value;
+
+            var outputText = "";
+
+            for (var i = 0; i < inputText.length; i++) {
+                var currentChar = inputText.charAt(i);
+
+                switch (currentChar) {
+                    case 'e':
+                        outputText += (option === 'encrypt') ? 'enter' : 'e';
+                        break;
+                    case 'i':
+                        outputText += (option === 'encrypt') ? 'imes' : 'i';
+                        break;
+                    case 'a':
+                        outputText += (option === 'encrypt') ? 'ai' : 'a';
+                        break;
+                    case 'o':
+                        outputText += (option === 'encrypt') ? 'ober' : 'o';
+                        break;
+                    case 'u':
+                        outputText += (option === 'encrypt') ? 'ufat' : 'u';
+                        break;
+                    default:
+                        outputText += currentChar;
+                }
+            }
+
+            document.getElementById('output').innerText = outputText;
+        }
+
+        function copiarTexto() {
+            var outputText = document.getElementById('output').innerText;
+            var tempInput = document.createElement("input");
+            tempInput.value = outputText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert('Texto copiado al portapapeles');
+        }
+    </script>
+</body>
+</html>
