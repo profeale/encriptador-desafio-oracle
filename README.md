@@ -1,2 +1,2 @@
 # encriptador-desafio-oracle
-deadio ejercicio oracle one
+desafio ejercicio oracle one
